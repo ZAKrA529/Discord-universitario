@@ -1,0 +1,622 @@
+/* ===================================
+   DISCORD-STYLE UNIVERSITARIO
+   Inspirado en Discord con paleta académica
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Inter', 'Segoe UI', -apple-system, sans-serif;
+    background-color: #f0f2f5;
+    color: #1a1a1a;
+    overflow-x: hidden;
+}
+
+/* ===================================
+   VARIABLES
+   =================================== */
+
+:root {
+    /* Colores principales - Paleta universitaria */
+    --primary-blue: #003366;
+    --primary-gold: #FFB81C;
+    --accent-teal: #006E7F;
+    --accent-burgundy: #8B1538;
+    --light-blue: #4A90E2;
+    
+    /* Colores de fondo estilo Discord */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f2f5;
+    --bg-tertiary: #e5e7eb;
+    --bg-sidebar: #003366;
+    --bg-sidebar-hover: #002244;
+    --bg-chat: #ffffff;
+    --bg-message-hover: #f8f9fa;
+    
+    /* Colores de texto */
+    --text-primary: #1a1a1a;
+    --text-secondary: #4a5568;
+    --text-muted: #9ca3af;
+    --text-white: #ffffff;
+    --text-gold: #FFB81C;
+    
+    /* Bordes */
+    --border-color: #e5e7eb;
+    --border-dark: #d1d5db;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.12);
+    
+    /* Espaciado */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    
+    /* Transiciones */
+    --transition: 0.2s ease;
+    
+    /* Anchos */
+    --sidebar-width: 240px;
+    --channel-list-width: 240px;
+    --member-list-width: 240px;
+}
+
+/* ===================================
+   LAYOUT PRINCIPAL (Estructura Discord)
+   =================================== */
+
+.app-container {
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ===================================
+   SIDEBAR IZQUIERDO (Servers/Universidad)
+   =================================== */
+
+.sidebar {
+    width: var(--sidebar-width);
+    background: var(--bg-sidebar);
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-header {
+    padding: var(--space-md);
+    border-bottom: 2px solid var(--primary-gold);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.university-name {
+    color: var(--text-white);
+    font-size: 1.1rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.university-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-gold);
+    color: var(--primary-blue);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.sidebar-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-md);
+}
+
+.sidebar-section {
+    margin-bottom: var(--space-lg);
+}
+
+.section-title {
+    color: var(--primary-gold);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-sm);
+    padding: 0 var(--space-sm);
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    color: rgba(255, 255, 255, 0.7);
+    border-radius: 6px;
+    margin-bottom: var(--space-xs);
+    cursor: pointer;
+    transition: all var(--transition);
+    font-size: 0.95rem;
+}
+
+.sidebar-item:hover {
+    background: var(--bg-sidebar-hover);
+    color: var(--text-white);
+}
+
+.sidebar-item.active {
+    background: var(--bg-sidebar-hover);
+    color: var(--text-white);
+    font-weight: 600;
+}
+
+.sidebar-item-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+}
+
+.sidebar-badge {
+    margin-left: auto;
+    background: var(--primary-gold);
+    color: var(--primary-blue);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.sidebar-footer {
+    padding: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--text-white);
+}
+
+.user-avatar {
+    width: 32px;
+    height: 32px;
+    background: var(--primary-gold);
+    color: var(--primary-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.user-details {
+    flex: 1;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.user-status {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.status-indicator {
+    width: 10px;
+    height: 10px;
+    background: #10b981;
+    border-radius: 50%;
+    border: 2px solid var(--bg-sidebar);
+    position: relative;
+    top: -8px;
+    left: 22px;
+}
+
+/* ===================================
+   ÁREA DE CONTENIDO PRINCIPAL
+   =================================== */
+
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-secondary);
+}
+
+/* Header del canal */
+.channel-header {
+    height: 60px;
+    background: var(--bg-primary);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 var(--space-lg);
+    box-shadow: var(--shadow-sm);
+}
+
+.channel-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.channel-hash {
+    color: var(--text-muted);
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+.channel-name {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 1rem;
+}
+
+.channel-topic {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    padding-left: var(--space-md);
+    border-left: 1px solid var(--border-color);
+}
+
+.channel-actions {
+    display: flex;
+    gap: var(--space-md);
+}
+
+.icon-button {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition);
+    color: var(--text-secondary);
+}
+
+.icon-button:hover {
+    background: var(--bg-secondary);
+    color: var(--primary-blue);
+}
+
+/* Área de mensajes */
+.messages-container {
+    flex: 1;
+    overflow-y: auto;
+    padding: var(--space-lg);
+}
+
+.message {
+    display: flex;
+    gap: var(--space-md);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 6px;
+    transition: background var(--transition);
+    margin-bottom: 4px;
+}
+
+.message:hover {
+    background: var(--bg-message-hover);
+}
+
+.message-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: var(--primary-blue);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    flex-shrink: 0;
+}
+
+.message-content {
+    flex: 1;
+    min-width: 0;
+}
+
+.message-header {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.message-author {
+    font-weight: 600;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+}
+
+.message-timestamp {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.message-badge {
+    background: var(--primary-gold);
+    color: var(--primary-blue);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.message-text {
+    color: var(--text-primary);
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.message-attachment {
+    margin-top: var(--space-sm);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: var(--space-md);
+    display: inline-block;
+}
+
+.attachment-icon {
+    color: var(--primary-blue);
+    margin-right: var(--space-sm);
+}
+
+/* Input de mensajes */
+.message-input-container {
+    padding: var(--space-lg);
+    background: var(--bg-primary);
+}
+
+.message-input-wrapper {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    padding: var(--space-sm) var(--space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    border: 1px solid var(--border-color);
+    transition: border var(--transition);
+}
+
+.message-input-wrapper:focus-within {
+    border-color: var(--primary-blue);
+}
+
+.message-input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-primary);
+    font-size: 0.95rem;
+    padding: var(--space-sm) 0;
+}
+
+.message-input::placeholder {
+    color: var(--text-muted);
+}
+
+.input-actions {
+    display: flex;
+    gap: var(--space-sm);
+}
+
+.input-icon {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border-radius: 4px;
+    color: var(--text-muted);
+    transition: all var(--transition);
+}
+
+.input-icon:hover {
+    background: var(--bg-tertiary);
+    color: var(--primary-blue);
+}
+
+/* ===================================
+   PANEL LATERAL DERECHO (Miembros)
+   =================================== */
+
+.members-panel {
+    width: var(--member-list-width);
+    background: var(--bg-primary);
+    border-left: 1px solid var(--border-color);
+    overflow-y: auto;
+}
+
+.members-section {
+    padding: var(--space-md);
+}
+
+.members-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.5px;
+    margin-bottom: var(--space-sm);
+}
+
+.member-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background var(--transition);
+    margin-bottom: 2px;
+}
+
+.member-item:hover {
+    background: var(--bg-secondary);
+}
+
+.member-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--accent-teal);
+    color: var(--text-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 0.85rem;
+    position: relative;
+}
+
+.member-status {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--bg-primary);
+    position: absolute;
+    bottom: -2px;
+    right: -2px;
+}
+
+.member-status.online {
+    background: #10b981;
+}
+
+.member-status.idle {
+    background: #f59e0b;
+}
+
+.member-status.dnd {
+    background: #ef4444;
+}
+
+.member-status.offline {
+    background: #6b7280;
+}
+
+.member-name {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   ANNOUNCEMENT BANNER
+   =================================== */
+
+.announcement-banner {
+    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--accent-teal) 100%);
+    color: var(--text-white);
+    padding: var(--space-md) var(--space-lg);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.announcement-content {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.announcement-icon {
+    font-size: 1.5rem;
+}
+
+.announcement-text {
+    font-size: 0.9rem;
+}
+
+.announcement-close {
+    cursor: pointer;
+    padding: var(--space-xs);
+    opacity: 0.8;
+    transition: opacity var(--transition);
+}
+
+.announcement-close:hover {
+    opacity: 1;
+}
+
+/* ===================================
+   UTILITIES
+   =================================== */
+
+.scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background: var(--border-dark);
+    border-radius: 4px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb:hover {
+    background: var(--text-muted);
+}
+
+/* ===================================
+   RESPONSIVE
+   =================================== */
+
+@media (max-width: 1024px) {
+    .members-panel {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        position: absolute;
+        left: -240px;
+        z-index: 100;
+        height: 100vh;
+        transition: left 0.3s ease;
+    }
+    
+    .sidebar.active {
+        left: 0;
+    }
+    
+    .channel-topic {
+        display: none;
+    }
+}

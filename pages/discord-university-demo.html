@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Virtual - Universidad Demo</title>
+    <link rel="stylesheet" href="../Styles/discord-university.css">
+    
+    <!-- SweetAlert2 CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+</head>
+<body>
+    
+    <div class="app-container">
+        
+        <!-- SIDEBAR IZQUIERDO -->
+        <aside class="sidebar scrollbar-custom">
+            <!-- Header del Sidebar -->
+            <div class="sidebar-header">
+                <div class="university-name">
+                    <div class="university-icon">U</div>
+                    <span>Universidad Demo</span>
+                </div>
+            </div>
+            
+            <!-- Contenido del Sidebar -->
+            <div class="sidebar-content scrollbar-custom">
+                
+                <!-- Sección de Canales Generales -->
+                <div class="sidebar-section">
+                    <div class="section-title">Canales Generales</div>
+                    <div class="sidebar-item active">
+                        <span class="sidebar-item-icon">#</span>
+                        <span>anuncios</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">#</span>
+                        <span>bienvenida</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">#</span>
+                        <span>general</span>
+                        <span class="sidebar-badge">12</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">#</span>
+                        <span>ayuda-academica</span>
+                    </div>
+                </div>
+                
+                <!-- Sección de Materias -->
+                <div class="sidebar-section">
+                    <div class="section-title">Mis Materias</div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">📚</span>
+                        <span>calculo-i</span>
+                        <span class="sidebar-badge">5</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">💻</span>
+                        <span>programacion-web</span>
+                        <span class="sidebar-badge">3</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">🔬</span>
+                        <span>fisica-ii</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">📊</span>
+                        <span>estadistica</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">🎨</span>
+                        <span>diseno-grafico</span>
+                    </div>
+                </div>
+                
+                <!-- Sección de Grupos de Estudio -->
+                <div class="sidebar-section">
+                    <div class="section-title">Grupos de Estudio</div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">🎯</span>
+                        <span>proyecto-final</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">📖</span>
+                        <span>club-de-lectura</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">⚽</span>
+                        <span>deportes</span>
+                    </div>
+                </div>
+                
+                <!-- Sección de Recursos -->
+                <div class="sidebar-section">
+                    <div class="section-title">Recursos</div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">📁</span>
+                        <span>biblioteca-virtual</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">🎥</span>
+                        <span>tutoriales</span>
+                    </div>
+                    <div class="sidebar-item">
+                        <span class="sidebar-item-icon">❓</span>
+                        <span>soporte-tecnico</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer del Sidebar -->
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <div style="position: relative;">
+                        <div class="user-avatar" id="userAvatar">JD</div>
+                        <div class="status-indicator"></div>
+                    </div>
+                    <div class="user-details">
+                        <div class="user-name" id="userName">Juan Pérez</div>
+                        <div class="user-status">Estudiante • En línea</div>
+                    </div>
+                    <span id="logoutButton" style="cursor: pointer; opacity: 0.7;" title="Cerrar sesión">🚪</span>
+                </div>
+            </div>
+        </aside>
+        
+        <!-- CONTENIDO PRINCIPAL -->
+        <main class="main-content">
+            
+            <!-- Banner de Anuncios -->
+            <div class="announcement-banner">
+                <div class="announcement-content">
+                    <span class="announcement-icon">📢</span>
+                    <span class="announcement-text">
+                        <strong>Importante:</strong> Inscripciones para el próximo semestre abiertas hasta el 15 de marzo
+                    </span>
+                </div>
+                <span class="announcement-close">✕</span>
+            </div>
+            
+            <!-- Header del Canal -->
+            <header class="channel-header">
+                <div class="channel-info">
+                    <span class="channel-hash">#</span>
+                    <span class="channel-name">anuncios</span>
+                    <span class="channel-topic">Canal oficial de anuncios y noticias importantes</span>
+                </div>
+                <div class="channel-actions">
+                    <div class="icon-button" title="Notificaciones">🔔</div>
+                    <div class="icon-button" title="Buscar">🔍</div>
+                    <div class="icon-button" title="Más opciones">⋯</div>
+                </div>
+            </header>
+            
+            <!-- Área de Mensajes -->
+            <div class="messages-container scrollbar-custom" id="messagesContainer">
+                <!-- Los mensajes se cargarán dinámicamente con JavaScript -->
+            </div>
+            
+            <!-- Input de Mensajes -->
+            <div class="message-input-container">
+                <div class="message-input-wrapper">
+                    <div class="input-icon" id="attachButton" title="Adjuntar imagen">📎</div>
+                    <input 
+                        type="text" 
+                        class="message-input" 
+                        id="messageInput"
+                        placeholder="Escribe un mensaje en #anuncios"
+                    >
+                    <input 
+                        type="file" 
+                        id="imageInput" 
+                        accept="image/*" 
+                        style="display: none;"
+                    >
+                    <div class="input-actions">
+                        <div class="input-icon">😊</div>
+                        <div class="input-icon" id="sendButton" title="Enviar mensaje">📤</div>
+                    </div>
+                </div>
+            </div>
+            
+        </main>
+        
+        <!-- PANEL LATERAL DERECHO (Miembros) -->
+        <aside class="members-panel scrollbar-custom">
+            
+            <!-- Profesores -->
+            <div class="members-section">
+                <div class="members-title">Profesores — 3</div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #8B1538;">
+                        DR
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Dr. Roberto Gómez</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #006E7F;">
+                        LC
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Dra. Laura Castro</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #4A90E2;">
+                        PM
+                        <div class="member-status idle"></div>
+                    </div>
+                    <span class="member-name">Prof. Pedro Martínez</span>
+                </div>
+            </div>
+            
+            <!-- Monitores -->
+            <div class="members-section">
+                <div class="members-title">Monitores — 2</div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #4A90E2;">
+                        ML
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">María López</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #FFB81C; color: #003366;">
+                        JS
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">José Sánchez</span>
+                </div>
+            </div>
+            
+            <!-- Estudiantes en línea -->
+            <div class="members-section">
+                <div class="members-title">Estudiantes — 124</div>
+                <div class="member-item">
+                    <div class="member-avatar">
+                        JD
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Juan Pérez</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #FFB81C; color: #003366;">
+                        AM
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Ana Martínez</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #006E7F;">
+                        CS
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Carlos Silva</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #4A90E2;">
+                        LR
+                        <div class="member-status idle"></div>
+                    </div>
+                    <span class="member-name">Luis Ramírez</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #8B1538;">
+                        SF
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Sofía Fernández</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar">
+                        DT
+                        <div class="member-status dnd"></div>
+                    </div>
+                    <span class="member-name">Diego Torres</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #FFB81C; color: #003366;">
+                        VG
+                        <div class="member-status online"></div>
+                    </div>
+                    <span class="member-name">Valeria García</span>
+                </div>
+                <div class="member-item">
+                    <div class="member-avatar" style="background: #006E7F;">
+                        MR
+                        <div class="member-status offline"></div>
+                    </div>
+                    <span class="member-name">Miguel Rodríguez</span>
+                </div>
+            </div>
+            
+        </aside>
+        
+    </div>
+
+    <!-- SweetAlert2 JS -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
+    <script src="../Js/chat-app-backend.js"></script>
+    
+    <!-- Actualizar info del usuario en el sidebar -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const userStr = localStorage.getItem('user');
+            if (userStr) {
+                const user = JSON.parse(userStr);
+                document.getElementById('userName').textContent = user.name;
+                document.getElementById('userAvatar').textContent = user.initials;
+                document.getElementById('userAvatar').style.background = user.avatarColor;
+            }
+        });
+    </script>
+</body>
+</html>
