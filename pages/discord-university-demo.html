@@ -18,7 +18,7 @@
             <!-- Header del Sidebar -->
             <div class="sidebar-header">
                 <div class="university-name">
-                    <div class="university-icon">U</div>
+                    <div class="university-icon"><a href="index.html">U</a></div>
                     <span>Universidad Demo</span>
                 </div>
             </div>
@@ -26,88 +26,22 @@
             <!-- Contenido del Sidebar -->
             <div class="sidebar-content scrollbar-custom">
                 
-                <!-- Sección de Canales Generales -->
+                <!-- Botón Explorar Canales -->
                 <div class="sidebar-section">
-                    <div class="section-title">Canales Generales</div>
-                    <div class="sidebar-item active">
-                        <span class="sidebar-item-icon">#</span>
-                        <span>anuncios</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">#</span>
-                        <span>bienvenida</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">#</span>
-                        <span>general</span>
-                        <span class="sidebar-badge">12</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">#</span>
-                        <span>ayuda-academica</span>
+                    <button id="exploreButton" class="sidebar-item" style="width: 100%; background: rgba(255, 184, 28, 0.1); color: #FFB81C; font-weight: 600;">
+                        <span class="sidebar-item-icon">🔍</span>
+                        <span><a href="channels.html">Explorar Cursos</a></span>
+                    </button>
+                </div>
+                
+                <!-- Sección de Mis Cursos -->
+                <div class="sidebar-section">
+                    <div class="section-title">Mis Cursos</div>
+                    <div id="channelsList">
+                        <!-- Los canales se cargarán dinámicamente -->
                     </div>
                 </div>
                 
-                <!-- Sección de Materias -->
-                <div class="sidebar-section">
-                    <div class="section-title">Mis Materias</div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">📚</span>
-                        <span>calculo-i</span>
-                        <span class="sidebar-badge">5</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">💻</span>
-                        <span>programacion-web</span>
-                        <span class="sidebar-badge">3</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">🔬</span>
-                        <span>fisica-ii</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">📊</span>
-                        <span>estadistica</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">🎨</span>
-                        <span>diseno-grafico</span>
-                    </div>
-                </div>
-                
-                <!-- Sección de Grupos de Estudio -->
-                <div class="sidebar-section">
-                    <div class="section-title">Grupos de Estudio</div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">🎯</span>
-                        <span>proyecto-final</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">📖</span>
-                        <span>club-de-lectura</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">⚽</span>
-                        <span>deportes</span>
-                    </div>
-                </div>
-                
-                <!-- Sección de Recursos -->
-                <div class="sidebar-section">
-                    <div class="section-title">Recursos</div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">📁</span>
-                        <span>biblioteca-virtual</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">🎥</span>
-                        <span>tutoriales</span>
-                    </div>
-                    <div class="sidebar-item">
-                        <span class="sidebar-item-icon">❓</span>
-                        <span>soporte-tecnico</span>
-                    </div>
-                </div>
             </div>
             
             <!-- Footer del Sidebar -->
@@ -143,9 +77,9 @@
             <!-- Header del Canal -->
             <header class="channel-header">
                 <div class="channel-info">
-                    <span class="channel-hash">#</span>
-                    <span class="channel-name">anuncios</span>
-                    <span class="channel-topic">Canal oficial de anuncios y noticias importantes</span>
+                    <span class="channel-hash" id="channelHash">#</span>
+                    <span class="channel-name" id="channelName">Cargando...</span>
+                    <span class="channel-topic" id="channelTopic">Cargando información del canal...</span>
                 </div>
                 <div class="channel-actions">
                     <div class="icon-button" title="Notificaciones">🔔</div>
@@ -185,114 +119,8 @@
         </main>
         
         <!-- PANEL LATERAL DERECHO (Miembros) -->
-        <aside class="members-panel scrollbar-custom">
-            
-            <!-- Profesores -->
-            <div class="members-section">
-                <div class="members-title">Profesores — 3</div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #8B1538;">
-                        DR
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Dr. Roberto Gómez</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #006E7F;">
-                        LC
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Dra. Laura Castro</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #4A90E2;">
-                        PM
-                        <div class="member-status idle"></div>
-                    </div>
-                    <span class="member-name">Prof. Pedro Martínez</span>
-                </div>
-            </div>
-            
-            <!-- Monitores -->
-            <div class="members-section">
-                <div class="members-title">Monitores — 2</div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #4A90E2;">
-                        ML
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">María López</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #FFB81C; color: #003366;">
-                        JS
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">José Sánchez</span>
-                </div>
-            </div>
-            
-            <!-- Estudiantes en línea -->
-            <div class="members-section">
-                <div class="members-title">Estudiantes — 124</div>
-                <div class="member-item">
-                    <div class="member-avatar">
-                        JD
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Juan Pérez</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #FFB81C; color: #003366;">
-                        AM
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Ana Martínez</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #006E7F;">
-                        CS
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Carlos Silva</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #4A90E2;">
-                        LR
-                        <div class="member-status idle"></div>
-                    </div>
-                    <span class="member-name">Luis Ramírez</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #8B1538;">
-                        SF
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Sofía Fernández</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar">
-                        DT
-                        <div class="member-status dnd"></div>
-                    </div>
-                    <span class="member-name">Diego Torres</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #FFB81C; color: #003366;">
-                        VG
-                        <div class="member-status online"></div>
-                    </div>
-                    <span class="member-name">Valeria García</span>
-                </div>
-                <div class="member-item">
-                    <div class="member-avatar" style="background: #006E7F;">
-                        MR
-                        <div class="member-status offline"></div>
-                    </div>
-                    <span class="member-name">Miguel Rodríguez</span>
-                </div>
-            </div>
-            
+        <aside class="members-panel scrollbar-custom" id="membersContainer">
+            <!-- Los miembros se cargarán dinámicamente -->
         </aside>
         
     </div>

@@ -221,10 +221,9 @@
             </div>
             
             <div class="form-group">
-                <label class="form-label" for="role">Rol (Opcional)</label>
-                <select id="role" class="form-select">
-                    <option value="">Estudiante</option>
-                    <option value="MONITOR">Monitor</option>
+                <label class="form-label" for="role">Rol</label>
+                <select id="role" class="form-select" required>
+                    <option value="ESTUDIANTE">Estudiante</option>
                     <option value="PROFESOR">Profesor</option>
                 </select>
             </div>
@@ -275,7 +274,7 @@
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const confirmPassword = document.getElementById('confirmPassword').value;
-            const role = document.getElementById('role').value || null;
+            const role = document.getElementById('role').value;  // ESTUDIANTE o PROFESOR
             
             // Validar contraseñas coincidan
             if (password !== confirmPassword) {
@@ -318,7 +317,7 @@
                         name, 
                         email, 
                         password,
-                        badge: role
+                        role
                     })
                 });
                 
